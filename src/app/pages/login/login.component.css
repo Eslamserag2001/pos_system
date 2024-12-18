@@ -1,0 +1,10 @@
+body{
+    background: linear-gradient(120deg, #f6d365, #fda085);
+    height: 100vh;
+  }
+  
+.card {
+    border: none;
+    border-radius: 10px;
+  }
+  

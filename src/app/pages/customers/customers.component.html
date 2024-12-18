@@ -1,0 +1,86 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Customers</h2>
+
+  <!-- نموذج إضافة/تعديل العملاء -->
+  <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <label for="firstName" class="form-label">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          class="form-control"
+          formControlName="firstName"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input
+          type="text"
+          id="lastName"
+          class="form-control"
+          formControlName="lastName"
+        />
+      </div>
+    </div>
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <label for="email" class="form-label">Email</label>
+        <input
+          type="email"
+          id="email"
+          class="form-control"
+          formControlName="email"
+        />
+      </div>
+      <div class="col-md-6">
+        <label for="phone" class="form-label">Phone</label>
+        <input
+          type="text"
+          id="phone"
+          class="form-control"
+          formControlName="phone"
+        />
+      </div>
+    </div>
+    <div class="d-flex mt-3">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="customerForm.invalid">
+        {{ isEditMode ? 'Update Customer' : 'Add Customer' }}
+      </button>
+      @if (isEditMode) {
+        <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+      }
+    </div>
+  </form>
+
+  <hr class="my-4" />
+
+  <!-- جدول العملاء -->
+  <div class="table-responsive">
+    <table class="table table-bordered table-striped">
+      <thead class="table-light">
+        <tr class="text-center">
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (customer of customers; track $index) {
+          <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.firstName }} {{ customer.lastName }}</td>
+            <td>{{ customer.email }}</td>
+            <td>{{ customer.phone }}</td>
+            <td class="text-center">
+              <button class="btn btn-warning btn-sm me-2" (click)="editCustomer(customer)">Edit</button>
+              <button class="btn btn-danger btn-sm" (click)="deleteCustomer(customer.id)">Delete</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

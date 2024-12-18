@@ -1,0 +1,75 @@
+<div class="container dashboard py-4">
+  <!-- قسم الإحصائيات -->
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card text-center  p-3">
+        <h3>${{ totalRevenue }}</h3>
+        <p>Total Revenue</p>
+        <span class="percentage text-success">+10.5% from Last Day</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center  p-3">
+        <h3>{{ totalOrders }}</h3>
+        <p>Total Orders</p>
+        <span class="percentage text-success">+10.5% from Last Day</span>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center  p-3">
+        <h3>{{ totalCustomers }}</h3>
+        <p>Total Customers</p>
+        <span class="percentage text-success">+10.5% from Last Day</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- قسم تحليل المبيعات -->
+  <div class="row g-4 mt-4">
+    <div class="col-12">
+      <div class="card p-3">
+        <h2 class="mb-3">Sales Analytics</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <p>Completed: {{ salesAnalytics.completed }}%</p>
+          </div>
+          <div class="col-md-4">
+            <p>Returned: {{ salesAnalytics.returned }}%</p>
+          </div>
+          <div class="col-md-4">
+            <p>Distributed: {{ salesAnalytics.distributed }}%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- قسم أفضل المنتجات -->
+  <div class="row g-4 mt-4">
+    <div class="col-12">
+      <div class="card p-3">
+        <h2 class="mb-3">Top Products</h2>
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Code</th>
+              <th>Orders</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (product of topProducts; track $index) {
+            <tr>
+              <td>{{ product.title }}</td>
+              <td>{{ product.id }}</td>
+              <td>{{ product.stock }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+

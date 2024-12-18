@@ -1,0 +1,33 @@
+<h4 class="position-absolute top-0">{{errorMessage}}</h4>
+
+ <div class="container pt-4">
+  <div class="row g-4">
+    
+    @for (item of products; track $index) {
+        <div class="col-md-3 h-50 " >
+
+        <div class="card  ">
+          <div  class="mx-auto text-center h-50" [routerLink]= "['/productcard', item.id ]">
+            <img [src]="item.thumbnail" class="card-img-top w-75  mx-auto" alt="Product Image" />
+
+          </div >
+          <div class="card-body ">
+            <h5 class="text-success">{{ item.brand }}</h5>
+            <h5>{{ item.category }}</h5>
+            <p class="card-text text-success">Price: ${{ item.price }}</p>
+            <!-- <p class="card-text h-25 overflow-hidden bg-danger">{{ item.description }}</p> -->
+          </div>
+        </div>
+      </div>
+      }
+  </div>
+</div>
+
+
+
+<div class="product-header text-center p-4">
+  <h2>Products</h2>
+  <button class="btn btn-success" routerLink="/add-product">Add New Product</button>
+</div>
+
+

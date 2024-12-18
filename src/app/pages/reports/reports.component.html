@@ -1,0 +1,104 @@
+
+
+<!-- Filters Section -->
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Reports Filter</h2>
+
+  <div class="filters-section mb-4">
+    <form class="row g-3" (submit)="applyFilters()">
+      <div class="col-md-8">
+        <label for="customerSearch" class="form-label">Search by Order ID or User ID</label>
+        <input
+          id="customerSearch"
+          type="text"
+          class="form-control"
+          placeholder="Enter Invoice ID or User ID"
+          [(ngModel)]="filters.customerName"
+          name="customerName"
+        />
+      </div>
+      <div class="col-md-4 d-flex align-items-end">
+        <button type="button" class="btn btn-primary me-2 w-50" (click)="applyFilters()">Apply</button>
+        <button type="button" class="btn btn-secondary w-50" (click)="resetFilters()">Reset</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Reports Table -->
+  <div class="table-responsive">
+    <table class="table table-bordered mt-4">
+      <thead class="table-light text-center">
+        <tr>
+          <th>Invoice ID</th>
+          <th>User ID</th>
+          <th>Customer Name</th>
+          <th>Total</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (report of filteredReports; track $index) {
+        <tr class="text-center">
+          <td>{{ report.id }}</td>
+          <td>{{ report.userId }}</td>
+          <td>{{ report.customerName }}</td>
+          <td>${{ report.total }}</td>
+          <td>{{ report.date }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="text-end">
+    <button class="btn btn-secondary mt-3" (click)="downloadReport()">Download PDF</button>
+  </div>
+</div>
+
+<!-- Sales Reports Section -->
+<div class="bg-info container p-4 mt-5">
+  <h2 class="text-center mb-4">Sales Reports</h2>
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Revenue</h5>
+          <p class="card-text">$ {{ totalRevenue }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Total Orders</h5>
+          <p class="card-text">{{ totalOrders }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Order ID</th>
+          <th>Customer Name</th>
+          <th>Total</th>
+          <th>T-Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (order of salesData; track $index) {
+        <tr>
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerName }} ({{ order.userId }})</td>
+          <td>${{ order.total }}</td>
+          <td>{{ order.totalQuantity }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+

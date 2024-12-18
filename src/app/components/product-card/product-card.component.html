@@ -1,0 +1,83 @@
+@if (isloaded) {
+
+<ngx-skeleton-loader count="2" appearance="circle"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="2" appearance="line"
+  [theme]="{ 'border-radius': '8px', 'width': '200px' }"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="2" appearance="circle"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="2" appearance="line"
+  [theme]="{ 'border-radius': '8px', 'width': '200px' }"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="2" appearance="circle"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="1" appearance="line"
+  [theme]="{ 'border-radius': '8px', 'width': '200px' }"></ngx-skeleton-loader>
+<ngx-skeleton-loader count="1" appearance="circle"></ngx-skeleton-loader>
+
+}
+
+
+
+
+
+
+
+@if (!isloaded) {
+<div class="container">
+
+<div class="row gy-4 justify-content-evenly pt-3 text-black-50">
+  <div class="col-8  mx-auto shadow">
+    <img [src]="product.images" class="w-75" alt="  {{ product?.brand }} ">
+
+  </div>
+  <DIV class="col-md-5 shadow">
+    <h3> <span class="text-success">AVAILSTATUS:</span> {{product.availabilityStatus}}</h3>
+    <h3> <span class="text-success">BRAND:</span> {{product.brand}}</h3>
+    <h3> <span class="text-success">CATEGORY:</span> {{product.category}}</h3>
+    <h3> <span class="text-success">DESCRIPTION:</span> {{product.description}}</h3>
+    <h3> <span class="text-success">MINQUANTITY:</span> {{product.minimumOrderQuantity}}</h3>
+    <h3> <span class="text-success">PRICE:</span> {{product.price}}</h3>
+    <h3> <span class="text-success">RATING:</span> {{product.rating}}</h3>
+    <h3> <span class="text-success">POLICY:</span> {{product.returnPolicy}}</h3>
+    @for (item of product.reviews; track $index) {
+      <h4> <span class="text-success"> COMMENT:</span> {{item.comment}}</h4>
+      <h4> <span class="text-success">DATE:</span> {{item.date}}</h4>
+      <h4> <span class="text-success">RATING:</span> {{item.rating}}</h4>
+      <h4> <span class="text-success">REVIEWEM:</span> {{item.reviewerEmail}}</h4>
+      <h4> <span class="text-success">REVIEWNM:</span> {{item.reviewerName}}</h4>
+    
+      }
+
+  </DIV>
+  
+  <DIV class="col-md-5 shadow">
+    <h4> <span class="text-success">DEPTHE:</span> {{ product.dimensions?.depth}}</h4>
+    <h4> <span class="text-success">HEIGHT:</span> {{ product.dimensions?.height}}</h4>
+    <h4> <span class="text-success">WIDTH:</span> {{ product.dimensions?.width}}</h4>
+    <h3> <span class="text-success">DISCOUNT:</span> {{product.discountPercentage}}</h3>
+    <h4> <span class="text-success">BARCODE: </span> {{product.meta.barcode}}</h4>
+    <h4> <span class="text-success"> CREATEDAT:</span> {{product.meta.createdAt}}</h4>
+    <h4> <span class="text-success">QRCODE:</span> {{product.meta.qrCode}}</h4>
+    <h4> <span class="text-success">UPDATEDAT:</span> {{product.meta.updatedAt}}</h4>
+    <h3> <span class="text-success">INFO:</span> {{product.shippingInformation}}</h3>
+    <h3> <span class="text-success">STOCK:</span> {{product.stock}}</h3>
+    <h3> <span class="text-success">TITLE:</span> {{product.title}}</h3>
+    <h3> <span class="text-success">WARRINFO:</span> {{product.warrantyInformation}}</h3>
+    <h3> <span class="text-success">WEIGHT:</span> {{product.weight}}</h3>
+
+  
+  </DIV>
+  
+
+  
+ 
+  
+
+  <DIV class="col-md-5 shadow">
+   
+  </DIV>
+  
+  
+</div>
+
+
+
+</div>
+}
